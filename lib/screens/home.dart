@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharmacy_store/components/footer.dart';
 import 'package:pharmacy_store/utils/colors.dart';
 import 'package:pharmacy_store/utils/text.dart';
 import 'package:pharmacy_store/widgets/category-card.dart';
@@ -463,7 +464,8 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
+              ),
+               Footer(),
             ],
           ),
         ),
