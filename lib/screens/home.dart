@@ -203,7 +203,7 @@ class HomeScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Container(
-                            height: 280,
+                            height: 288,
                             padding: EdgeInsets.all(20),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
@@ -211,7 +211,7 @@ class HomeScreen extends StatelessWidget {
                             ),
                             child: Column(
                               children: [
-                                SizedBox(height: 75,),
+                                SizedBox(height: 70,),
                                 TextLG(text: "Free Online Consultations!"),
                                 TextSM(text: "At Amber Pharmaceuticals we provide the best\npharmacists and doctors around the clock to provide\nassistance with any of your prescription queries.\nYou can rest assure that this consultation medium\nis safe and confidential."),
                                 Row(

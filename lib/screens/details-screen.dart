@@ -20,8 +20,53 @@ class _ProductDetailsState extends State<ProductDetails> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Ink(
+              width: 45,
+              height: 45,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Icon(Icons.arrow_back),
+            ),
+          ),
+          iconTheme: IconThemeData(
+            color: Paints.darkGrey,
+          ),
+          titleSpacing: 10,
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          actions: [
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/cart');
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(right: 10.0),
+                child: Center(
+                  child: Container(
+                    width: 45,
+                    height: 45,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Icon(
+                      Icons.shopping_cart,
+                      color: Paints.darkGrey,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
         backgroundColor: Paints.primaryColor,
-        body: Column(
+        body: ListView(
           children: [
             Container(
               padding: EdgeInsets.all(20),
@@ -142,19 +187,26 @@ class _ProductDetailsState extends State<ProductDetails> {
                       ),
                     ),
                     SizedBox(height: 15,),
-                    SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Expanded(child: TextMD(text: "At Amber Pharmaceuticals we provide the best pharmacists and doctors around the clock to provide\nassistance with any of your prescription queries.\nYou can rest assure that this consultation medium\nis safe and confidential.")),
-                            ],
-                          ),Row(
-                            children: [
-                              Expanded(child: TextMD(text: "At Amber Pharmaceuticals we provide the best pharmacists and doctors around the clock to provide\nassistance with any of your prescription queries.\nYou can rest assure that this consultation medium\nis safe and confidential.")),
-                            ],
-                          ),
-                        ],
+                    SizedBox(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(child: TextMD(text: "At Amber Pharmaceuticals we provide the best pharmacists and doctors around the clock to provide\nassistance with any of your prescription queries.\nYou can rest assure that this consultation medium\nis safe and confidential.")),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Expanded(child: TextMD(text: "At Amber Pharmaceuticals we provide the best pharmacists and doctors around the clock to provide\nassistance with any of your prescription queries.\nYou can rest assure that this consultation medium\nis safe and confidential.")),
+                              ],
+                            ), Row(
+                              children: [
+                                Expanded(child: TextMD(text: "At Amber Pharmaceuticals we provide the best pharmacists and doctors around the clock to provide\nassistance with any of your prescription queries.\nYou can rest assure that this consultation medium\nis safe and confidential.")),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     )
 
