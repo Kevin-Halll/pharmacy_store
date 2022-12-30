@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pharmacy_store/utils/text.dart';
 import 'package:pharmacy_store/widgets/product-card.dart';
 
+import '../components/footer.dart';
 import '../utils/colors.dart';
 import '../widgets/category-card.dart';
 
@@ -142,7 +143,9 @@ class ProductScreen extends StatelessWidget {
                         return ProductCard();
                       }))
                 ],
-              )
+              ),
+              SizedBox(height: 30,),
+              Footer(),
             ],
           ),
         ),

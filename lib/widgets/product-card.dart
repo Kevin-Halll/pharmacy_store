@@ -20,7 +20,8 @@ class ProductCard extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: GestureDetector(
                 onTap: (){
-                  return print("here are the details");
+                  print("here are the details");
+                  Navigator.pushNamed(context, "/details");
                 },
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

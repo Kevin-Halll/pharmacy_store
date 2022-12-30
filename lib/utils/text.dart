@@ -30,7 +30,7 @@ class TextMD extends StatelessWidget {
   final String text;
   double size;
   TextOverflow overflow;
-  TextMD({this.color, this.size=12, required this.text, this.overflow=TextOverflow.ellipsis, Key? key}) : super(key: key);
+  TextMD({this.color, this.size=12, required this.text, this.overflow=TextOverflow.visible, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
