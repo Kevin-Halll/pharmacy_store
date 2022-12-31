@@ -140,7 +140,7 @@ class HomeScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             CategoryCard(text: "Medication\nProducts", imageUrl: "assets/images/bottle-of-pills.png", itemCount: "120 items"),
-                            CategoryCard(text: "Skin Care & hygeine\nProducts", imageUrl: "assets/images/skin-care.png", itemCount: "120 items"),
+                            CategoryCard(text: "Skin Care\nProducts", imageUrl: "assets/images/skin-care.png", itemCount: "120 items"),
                             CategoryCard(text: "Skin Care\nProducts", imageUrl: "assets/images/skin-care.png", itemCount: "120 items"),
 
                           ],
@@ -179,7 +179,7 @@ class HomeScreen extends StatelessWidget {
                           child: Column(
                             children: [
                               CategoryCard(text: "Medication\nProducts", imageUrl: "assets/images/bottle-of-pills.png", itemCount: "120 items"),
-                              CategoryCard(text: "Skin Care & hygeine\nProducts", imageUrl: "assets/images/skin-care.png", itemCount: "120 items"),
+                              CategoryCard(text: "Skin Care\nProducts", imageUrl: "assets/images/skin-care.png", itemCount: "120 items"),
                               CategoryCard(text: "Skin Care\nProducts", imageUrl: "assets/images/skin-care.png", itemCount: "120 items"),
                             ],
                           ),

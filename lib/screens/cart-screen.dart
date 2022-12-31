@@ -3,13 +3,21 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pharmacy_store/utils/colors.dart';
 import 'package:pharmacy_store/utils/text.dart';
 
-class Cart extends StatelessWidget {
+class Cart extends StatefulWidget {
   const Cart({Key? key}) : super(key: key);
+
+  @override
+  State<Cart> createState() => _CartState();
+}
+
+class _CartState extends State<Cart> {
+  int _amount = 100;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(child:
     Scaffold(
+      backgroundColor: Paints.white1,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -52,7 +60,7 @@ class Cart extends StatelessWidget {
                   children: [
                     Container(
                       width: double.infinity,
-                      height: 110,
+                      height: 118,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.black, width: 2),
                       ),
@@ -93,40 +101,134 @@ class Cart extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.8,
+                            width: MediaQuery.of(context).size.width * 0.78,
                             child: Material(
                               borderRadius: BorderRadius.circular(15),
                               // color: Paints.darkGrey,
-                              elevation: 1,
+                              elevation: 3,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: [
-                                    Image.asset("assets/images/soles.png"),
-                                    Column(
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-                                            TextMD(text: "Orthopedic Soles", color: Paints.darkGrey,),
-                                          ],
-                                        ),
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-                                            SizedBox(
-                                              width: 60,
-
-                                              child: Divider(
-                                                color: Paints.secondaryColor,
-                                                thickness: 3,
-                                              ),
-                                            ),
-                                          ],
-                                        )
-                                      ],
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.pink
                                     )
-                                  ],
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                           decoration: BoxDecoration(
+                                             border: Border.all(color: Colors.blue)
+                                           ),
+                                          child: Image.asset("assets/images/soles.png", width: 95, height: MediaQuery.of(context).size.width, fit: BoxFit.contain,)),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            border: Border.all(color: Colors.green)
+                                        ),
+                                        child: Expanded(
+                                          child: Row(
+                                            children: [
+                                              Column(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                      TextMD(text: "Orthopedic Soles", color: Paints.darkGrey, size: 14,),
+                                                      SizedBox(
+                                                        width: 50,
+                                                        child: Divider(
+                                                          color: Paints.secondaryColor,
+                                                          thickness: 3,
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                  Expanded(
+                                                    child: Row(
+                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                      children: [
+                                                        TextLG(text: "\$\284.50", color: Paints.secondaryColor, size: 16,),
+                                                        SizedBox(width: 20,),
+                                                        Material(
+                                                          elevation: 0,
+                                                          // color: Paints.secondaryColor,
+                                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
+                                                          child: Row(
+                                                            children: [
+                                                              //<------------ decrease number of items ------------>
+                                                              IconButton(
+                                                                onPressed: () {
+                                                                  setState(() {
+                                                                    if (_amount <= 1) {
+                                                                      _amount = 1;
+                                                                    }
+                                                                    _amount--;
+                                                                  });
+                                                                },
+                                                                icon: Ink(
+                                                                  decoration: BoxDecoration(
+                                                                      borderRadius: BorderRadius.circular(7.32),
+                                                                      border: Border.all(color: Paints.whiteOpacity)
+                                                                  ),
+                                                                  height: 24,
+                                                                  width: 20,
+                                                                  child: const Icon(
+                                                                    Icons.remove,
+                                                                    size: 10,
+                                                                    // color: Colors.white,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              //<------------ display of number of items ------------>
+                                                              // Text('$_amount'),
+                                                              Padding(
+                                                                padding: const EdgeInsets.symmetric(horizontal: 0.0),
+                                                                child: TextMD(text: "$_amount",),
+                                                              ),
+
+                                                              //<------------ increase number of items ------------>
+                                                              IconButton(
+                                                                onPressed: () {
+                                                                  setState(() {
+                                                                    _amount++;
+                                                                  });
+                                                                },
+                                                                icon: Ink(
+                                                                  decoration: BoxDecoration(
+                                                                      borderRadius: BorderRadius.circular(7.32),
+                                                                      border: Border.all(color: Paints.white1)
+                                                                  ),
+                                                                  height: 24,
+                                                                  width: 20,
+                                                                  child: const Icon(
+                                                                    Icons.add,
+                                                                    size: 10,
+                                                                    // color: Colors.white,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      // Column(
+                                      //   mainAxisAlignment: MainAxisAlignment.end,
+                                      //   children: [
+                                      //
+                                      //   ],
+                                      // )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
