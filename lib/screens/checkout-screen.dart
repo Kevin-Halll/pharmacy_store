@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharmacy_store/utils/colors.dart';
 import 'package:pharmacy_store/utils/text.dart';
 
 class Checkout extends StatelessWidget {
@@ -6,8 +7,17 @@ class Checkout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: TextLG(text: "Checkout Screen"),
+    return Scaffold(
+      backgroundColor: Paints.white1,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.black,
+        ),
+        title: TextLG(text: "Checkout", color: Paints.darkGrey,),
+        centerTitle: true,
+      ),
     );
   }
 }
