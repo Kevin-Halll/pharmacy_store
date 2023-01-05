@@ -28,7 +28,7 @@ class ProductScreen extends StatelessWidget {
                 ),
                 child: Container(
                   padding: EdgeInsets.all(25),
-                  height: 180,
+                  height: 200,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(bottomRight: Radius.circular(50), bottomLeft: Radius.circular(50)),
                     gradient: LinearGradient(
@@ -65,12 +65,12 @@ class ProductScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: 15,)
+                      SizedBox(height: 10,)
                     ],
                   ),
                 ),
               ),
-              SizedBox(height: 50,),
+              SizedBox(height: 40,),
             // ******
               //Banner strip with list of categories...
            // *******
@@ -109,7 +109,7 @@ class ProductScreen extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      SizedBox(width: 150, child: CategoryCard(text: "Medication\nProducts", imageUrl: "assets/images/bottle-of-pills.png", itemCount: "120 items")),
+                      SizedBox(width: 150, child: CategoryCard(text: "Orthopedic\nProducts", imageUrl: "assets/images/soles.png", itemCount: "120 items")),
                       SizedBox(width: 150, child: CategoryCard(text: "Medication\nProducts", imageUrl: "assets/images/bottle-of-pills.png", itemCount: "120 items")),
                       SizedBox(width: 150, child: CategoryCard(text: "Medication\nProducts", imageUrl: "assets/images/bottle-of-pills.png", itemCount: "120 items")),
                       SizedBox(width: 150, child: CategoryCard(text: "Medicationddddddddddddddddd\nProducts", imageUrl: "assets/images/bottle-of-pills.png", itemCount: "120 items")),

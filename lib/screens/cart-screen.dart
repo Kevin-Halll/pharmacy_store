@@ -19,7 +19,7 @@ class _CartState extends State<Cart> {
   Widget build(BuildContext context) {
     return SafeArea(child:
     Scaffold(
-      backgroundColor: Paints.white1,
+      backgroundColor: Color(0xFFD5E8F4),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -43,8 +43,8 @@ class _CartState extends State<Cart> {
         title: TextLG(text: "My Cart", color: Paints.darkGrey,),
       ),
 
-      body: SingleChildScrollView(
-        child: Column(
+      body: Container(
+        child: Stack(
           children: [
             Padding(
               padding: const EdgeInsets.all(20.0),
@@ -60,7 +60,7 @@ class _CartState extends State<Cart> {
                     ),
                   ),
                   SizedBox(
-                    height: 360,
+                    height: MediaQuery.of(context).size.height * 0.47,
                     child: ListView.builder(
                       itemCount: item.length,
                       itemBuilder: (context, index) {

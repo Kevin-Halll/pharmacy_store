@@ -65,7 +65,7 @@ class _CartCardState extends State<CartCard> {
                 child: Material(
                   borderRadius: BorderRadius.circular(15),
 
-                  // color: Paints.darkGrey,
+                  color: Colors.white,
                   elevation: 3,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
