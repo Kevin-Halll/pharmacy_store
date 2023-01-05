@@ -94,7 +94,9 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     TextLG(text: "Categories", color: Paints.white1),
                     GestureDetector(
-                      onTap: (){},
+                      onTap: (){
+                        Navigator.pushNamed(context, "/categories");
+                      },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

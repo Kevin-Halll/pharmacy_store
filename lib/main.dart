@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pharmacy_store/screens/cart-screen.dart';
+import 'package:pharmacy_store/screens/category-screen.dart';
 import 'package:pharmacy_store/screens/checkout-screen.dart';
 import 'package:pharmacy_store/screens/details-screen.dart';
 import 'package:pharmacy_store/screens/home.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         "/details": (context) => ProductDetails(),
         "/cart": (context) => Cart(),
         "/checkout": (context) => Checkout(),
+        "/categories": (context) => CategoryScreen(),
       },
     );
 
