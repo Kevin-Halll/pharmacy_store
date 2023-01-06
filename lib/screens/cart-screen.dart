@@ -21,7 +21,7 @@ class _CartState extends State<Cart> {
     Scaffold(
       backgroundColor: Color(0xFFD5E8F4),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Paints.primaryColor,
         elevation: 0,
         leading: IconButton(
           onPressed: () {
@@ -31,7 +31,7 @@ class _CartState extends State<Cart> {
             width: 45,
             height: 45,
             decoration: BoxDecoration(
-                color: Paints.secondaryColor, borderRadius: BorderRadius.circular(10)),
+                color: Paints.primaryColor, borderRadius: BorderRadius.circular(10)),
             child: Icon(
               Icons.arrow_back,
               size: 20,
@@ -40,7 +40,7 @@ class _CartState extends State<Cart> {
           ),
         ),
         centerTitle: true,
-        title: TextLG(text: "My Cart", color: Paints.darkGrey,),
+        title: TextLG(text: "My Cart", color: Colors.white,),
       ),
 
       body: Container(

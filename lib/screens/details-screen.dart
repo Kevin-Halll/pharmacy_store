@@ -29,10 +29,10 @@ class _ProductDetailsState extends State<ProductDetails> {
               width: 45,
               height: 45,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Paints.primaryColor,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Icon(Icons.arrow_back),
+              child: Icon(Icons.arrow_back, color: Colors.white,),
             ),
           ),
           iconTheme: IconThemeData(
@@ -53,11 +53,11 @@ class _ProductDetailsState extends State<ProductDetails> {
                     width: 45,
                     height: 45,
                     decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Paints.primaryColor,
                         borderRadius: BorderRadius.circular(10)),
                     child: Icon(
                       Icons.shopping_cart,
-                      color: Paints.darkGrey,
+                      color: Colors.white,
                     ),
                   ),
                 ),

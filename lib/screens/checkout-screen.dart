@@ -10,12 +10,12 @@ class Checkout extends StatelessWidget {
     return Scaffold(
       backgroundColor: Paints.white1,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Paints.primaryColor,
         elevation: 0,
         iconTheme: const IconThemeData(
-          color: Colors.black,
+          color: Colors.white,
         ),
-        title: TextLG(text: "Checkout", color: Paints.darkGrey,),
+        title: TextLG(text: "Checkout", color: Colors.white,),
         centerTitle: true,
       ),
     );

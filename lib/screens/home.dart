@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pharmacy_store/components/footer.dart';
 import 'package:pharmacy_store/utils/colors.dart';
 import 'package:pharmacy_store/utils/text.dart';
+import 'package:pharmacy_store/widgets/appDrawer.dart';
 import 'package:pharmacy_store/widgets/category-card.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,6 +11,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+
+      ),
       backgroundColor: Paints.primaryColor,
       body: SafeArea(
         child: SingleChildScrollView(

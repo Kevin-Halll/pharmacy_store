@@ -6,9 +6,9 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
+      child: Column(
         //<------------ menu information section ------------>
-        padding: EdgeInsets.zero,
+        // padding: EdgeInsets.zero,
         children: <Widget>[
           // FutureBuilder<String?>(
           //   future: AuthService().getLocalUser("user"),
