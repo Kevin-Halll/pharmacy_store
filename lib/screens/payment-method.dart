@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../utils/colors.dart';
 import '../utils/text.dart';
@@ -73,7 +74,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text("Credit Card"),
-                                  Icon(Icons.credit_card, color: Colors.blue,)
+                                  FaIcon(FontAwesomeIcons.creditCard, color: Colors.blue, size: 20,)
                                 ],
                               ),
                               value: "credit-card",
