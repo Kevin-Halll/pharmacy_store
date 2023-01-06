@@ -4,6 +4,7 @@ import 'package:pharmacy_store/screens/category-screen.dart';
 import 'package:pharmacy_store/screens/checkout-screen.dart';
 import 'package:pharmacy_store/screens/details-screen.dart';
 import 'package:pharmacy_store/screens/home.dart';
+import 'package:pharmacy_store/screens/payment-method.dart';
 import 'package:pharmacy_store/screens/products.dart';
 import 'package:pharmacy_store/screens/sign-in-screen.dart';
 
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         "/cart": (context) => Cart(),
         "/checkout": (context) => Checkout(),
         "/categories": (context) => CategoryScreen(),
+        "/payments": (context) => PaymentMethod(),
       },
     );
 

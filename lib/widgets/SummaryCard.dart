@@ -4,7 +4,9 @@ import '../utils/colors.dart';
 import '../utils/text.dart';
 
 class SummaryCard extends StatelessWidget {
-  const SummaryCard({Key? key}) : super(key: key);
+
+  String route;
+   SummaryCard({Key? key, required this.route }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +114,7 @@ class SummaryCard extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * 0.8,
                     child: ElevatedButton(
                         onPressed: (){
-                          Navigator.pushNamed(context, "/checkout");
+                          Navigator.pushNamed(context, "/${route}");
                         },
                       child: TextLG(text: "CHECKOUT"),
                       style: ButtonStyle(

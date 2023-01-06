@@ -14,7 +14,7 @@ class Cart extends StatefulWidget {
 
 class _CartState extends State<Cart> {
   var item = [1, 2, 4, 5, 6, 7, 8, 9, 10];
-
+  String navRoute = "/payments";
   @override
   Widget build(BuildContext context) {
     return SafeArea(child:
@@ -74,9 +74,9 @@ class _CartState extends State<Cart> {
                 ],
               ),
             ),
-            const Positioned(
+             Positioned(
               bottom: 0,
-              child: SummaryCard(),
+              child: SummaryCard(route: "payments"),
             ),
           ],
         ),
