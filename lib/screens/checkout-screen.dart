@@ -1,9 +1,12 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pharmacy_store/utils/colors.dart';
 import 'package:pharmacy_store/utils/text.dart';
 import 'package:pharmacy_store/widgets/SummaryCard.dart';
+
+import '../utils/inputValidators.dart';
 
 class Checkout extends StatefulWidget {
   const Checkout({Key? key}) : super(key: key);
@@ -15,6 +18,11 @@ class Checkout extends StatefulWidget {
 class _CheckoutState extends State<Checkout> {
 
   final _formKey = GlobalKey<FormState>();
+  final _field1Key = GlobalKey<FormFieldState>();
+  final _field2Key = GlobalKey<FormFieldState>();
+  final _field3Key = GlobalKey<FormFieldState>();
+  final _field4Key = GlobalKey<FormFieldState>();
+  FocusNode myFocusNode = new FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -50,25 +58,141 @@ class _CheckoutState extends State<Checkout> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25.0),
                         child: Material(
+                          elevation: 3,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                           child: Padding(
                             padding: const EdgeInsets.all(15.0),
                             child: Form(
                               key: _formKey,
                               child: Column(
                                 children: [
-                                  TextFormField(
-                                    // The validator receives the text that the user has entered.
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Please enter some text';
-                                      }
-                                      return null;
-                                    },
-                                    decoration: InputDecoration(
-                                      filled: true,
-                                      border: OutlineInputBorder(borderSide: BorderSide.none)
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: TextFormField(
+                                      // The validator receives the text that the user has entered.
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Please enter some text';
+                                        }
+                                        return null;
+                                      },
+                                      cursorColor: Paints.secondaryColor,
+                                      decoration: InputDecoration(
+                                        filled: true,
+                                        border: OutlineInputBorder(borderSide: BorderSide.none),
+                                        labelText: "Card Holder's Name",
+                                        labelStyle: TextStyle(
+                                            color: myFocusNode.hasFocus ? Colors.blue : Paints.secondaryColor
+                                        ),
+                                        hintText: "John Doe",
+                                      ),
                                     ),
                                   ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: TextFormField(
+                                      key: _field2Key,
+                                      onChanged: (value){
+                                        _field2Key.currentState!.validate();
+                                        // myFocusNode.hasFocus;
+                                      },
+                                      // The validator receives the text that the user has entered.
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Your card number is required';
+                                        }
+                                        return null;
+                                      },
+                                      //<----------- Formatters ---------->
+                                      inputFormatters: [
+                                        FilteringTextInputFormatter.digitsOnly,
+                                        CardNumberFormatter(),
+                                      ],
+                                      keyboardType: TextInputType.number,
+                                      maxLength: 25,
+                                      //<----------------------------------->
+
+                                      cursorColor: Paints.secondaryColor,
+                                      decoration: InputDecoration(
+                                        filled: true,
+                                        // fillColor: _field2Key.currentState!.validate() ? Colors.red[200] : Colors.grey[200],
+                                        border: OutlineInputBorder(borderSide: BorderSide(color: Colors.green)),
+                                        labelText: "Card Number",
+                                        labelStyle: TextStyle(
+                                            color: myFocusNode.hasFocus ? Colors.blue : Paints.secondaryColor
+                                        ),
+                                        hintText: "xxxx - xxxx - xxxx - xxxx",
+                                      ),
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Flexible(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: TextFormField(
+                                            // The validator receives the text that the user has entered.
+                                            validator: (value) {
+                                              if (value == null || value.isEmpty) {
+                                                return 'Please enter some text';
+                                              }
+                                              return null;
+                                            },
+
+                                            //<----------- Formatters ---------->
+                                            inputFormatters: [
+                                              FilteringTextInputFormatter.digitsOnly,
+                                              CardExpirationFormatter(),
+                                            ],
+                                            keyboardType: TextInputType.number,
+                                            maxLength: 5,
+                                            //<----------------------------------->
+
+
+                                            cursorColor: Paints.secondaryColor,
+                                            decoration: InputDecoration(
+                                              filled: true,
+                                              border: OutlineInputBorder(borderSide: BorderSide.none),
+                                              labelText: "Expiration Date",
+                                              labelStyle: TextStyle(
+                                                  color: myFocusNode.hasFocus ? Colors.blue : Paints.secondaryColor
+                                              ),
+                                              hintText: "01/23",
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Flexible(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: TextFormField(
+                                            // The validator receives the text that the user has entered.
+                                            validator: (value) {
+                                              if (value == null || value.isEmpty) {
+                                                return 'Please enter some text';
+                                              }
+                                              return null;
+                                            },
+
+                                            //<----------- Formatters ---------->
+                                            keyboardType: TextInputType.number,
+                                            maxLength: 3,
+                                            //<----------------------------------->
+                                            cursorColor: Paints.secondaryColor,
+                                            decoration: InputDecoration(
+                                              filled: true,
+                                              border: OutlineInputBorder(borderSide: BorderSide.none),
+                                              labelText: "CCV",
+                                              labelStyle: TextStyle(
+                                                  color: myFocusNode.hasFocus ? Colors.blue : Paints.secondaryColor
+                                              ),
+                                              hintText: "***",
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  )
                                 ],
                               ),
                             ),
