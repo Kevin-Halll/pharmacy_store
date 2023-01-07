@@ -69,17 +69,24 @@ class _CheckoutState extends State<Checkout> {
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: TextFormField(
+                                      key: _field1Key,
+                                      onChanged: (value) {
+                                        _field1Key.currentState!.validate();
+                                      },
                                       // The validator receives the text that the user has entered.
                                       validator: (value) {
                                         if (value == null || value.isEmpty) {
-                                          return 'Please enter some text';
+                                          return 'Please enter full name';
                                         }
                                         return null;
                                       },
                                       cursorColor: Paints.secondaryColor,
                                       decoration: InputDecoration(
                                         filled: true,
-                                        border: OutlineInputBorder(borderSide: BorderSide.none),
+                                        enabledBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide.none
+                                        ),
+                                        // border: OutlineInputBorder(borderSide: BorderSide.none),
                                         labelText: "Card Holder's Name",
                                         labelStyle: TextStyle(
                                             color: myFocusNode.hasFocus ? Colors.blue : Paints.secondaryColor
@@ -101,6 +108,9 @@ class _CheckoutState extends State<Checkout> {
                                         if (value == null || value.isEmpty) {
                                           return 'Your card number is required';
                                         }
+                                        // if( !myFocusNode.hasFocus ) {
+                                        //   return "Complete your 16 digit number";
+                                        // }
                                         return null;
                                       },
                                       //<----------- Formatters ---------->
@@ -115,11 +125,15 @@ class _CheckoutState extends State<Checkout> {
                                       cursorColor: Paints.secondaryColor,
                                       decoration: InputDecoration(
                                         filled: true,
-                                        // fillColor: _field2Key.currentState!.validate() ? Colors.red[200] : Colors.grey[200],
-                                        border: OutlineInputBorder(borderSide: BorderSide(color: Colors.green)),
+
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide.none
+                                        ),
+                                        // fillColor: _field2Key.currentState!.isValid ? Colors.red[200] : Colors.grey[200],
+                                        // border: OutlineInputBorder(borderSide: !myFocusNode.hasFocus ? BorderSide() : BorderSide.none),
                                         labelText: "Card Number",
                                         labelStyle: TextStyle(
-                                            color: myFocusNode.hasFocus ? Colors.blue : Paints.secondaryColor
+                                            color: myFocusNode.hasFocus ? Colors.blue : Paints.secondaryColor,
                                         ),
                                         hintText: "xxxx - xxxx - xxxx - xxxx",
                                       ),
@@ -131,10 +145,15 @@ class _CheckoutState extends State<Checkout> {
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: TextFormField(
+                                            key: _field3Key,
+                                            onChanged: (value){
+                                              _field3Key.currentState!.validate();
+                                              // myFocusNode.hasFocus;
+                                            },
                                             // The validator receives the text that the user has entered.
                                             validator: (value) {
                                               if (value == null || value.isEmpty) {
-                                                return 'Please enter some text';
+                                                return 'Date required';
                                               }
                                               return null;
                                             },
@@ -152,7 +171,10 @@ class _CheckoutState extends State<Checkout> {
                                             cursorColor: Paints.secondaryColor,
                                             decoration: InputDecoration(
                                               filled: true,
-                                              border: OutlineInputBorder(borderSide: BorderSide.none),
+                                              enabledBorder: UnderlineInputBorder(
+                                                  borderSide: BorderSide.none
+                                              ),
+                                              // border: OutlineInputBorder(borderSide: BorderSide.none),
                                               labelText: "Expiration Date",
                                               labelStyle: TextStyle(
                                                   color: myFocusNode.hasFocus ? Colors.blue : Paints.secondaryColor
@@ -166,10 +188,14 @@ class _CheckoutState extends State<Checkout> {
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: TextFormField(
+                                            key: _field4Key,
+                                            onChanged: (value){
+                                              _field4Key.currentState!.validate();
+                                            },
                                             // The validator receives the text that the user has entered.
                                             validator: (value) {
                                               if (value == null || value.isEmpty) {
-                                                return 'Please enter some text';
+                                                return 'CCV required';
                                               }
                                               return null;
                                             },
@@ -181,7 +207,10 @@ class _CheckoutState extends State<Checkout> {
                                             cursorColor: Paints.secondaryColor,
                                             decoration: InputDecoration(
                                               filled: true,
-                                              border: OutlineInputBorder(borderSide: BorderSide.none),
+                                              enabledBorder: UnderlineInputBorder(
+                                                  borderSide: BorderSide.none
+                                              ),
+                                              // border: OutlineInputBorder(borderSide: BorderSide()),
                                               labelText: "CCV",
                                               labelStyle: TextStyle(
                                                   color: myFocusNode.hasFocus ? Colors.blue : Paints.secondaryColor
