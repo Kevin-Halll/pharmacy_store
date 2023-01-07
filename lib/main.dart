@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pharmacy_store/screens/cart-screen.dart';
 import 'package:pharmacy_store/screens/category-screen.dart';
 import 'package:pharmacy_store/screens/checkout-screen.dart';
+import 'package:pharmacy_store/screens/delivery-screen.dart';
 import 'package:pharmacy_store/screens/details-screen.dart';
 import 'package:pharmacy_store/screens/home.dart';
 import 'package:pharmacy_store/screens/payment-method.dart';
@@ -34,6 +35,8 @@ class MyApp extends StatelessWidget {
         "/checkout": (context) => Checkout(),
         "/categories": (context) => CategoryScreen(),
         "/payments": (context) => PaymentMethod(),
+        // "/delivery": (context) => MapSample(),
+        "/delivery": (context) => DeliverySreen(),
       },
     );
 

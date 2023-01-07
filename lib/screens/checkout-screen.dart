@@ -232,7 +232,7 @@ class _CheckoutState extends State<Checkout> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            SummaryCard(route: "done"),
+                            SummaryCard(route: "delivery"),
                           ],
                         ),
                       )
