@@ -8,6 +8,7 @@ import 'package:pharmacy_store/screens/home.dart';
 import 'package:pharmacy_store/screens/payment-method.dart';
 import 'package:pharmacy_store/screens/products.dart';
 import 'package:pharmacy_store/screens/sign-in-screen.dart';
+import 'package:pharmacy_store/screens/receipt-screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,10 +23,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-      ),
+      theme: ThemeData(),
       home: SafeArea(child: const SignIn()),
-
       routes: {
         "": (context) => SignIn(),
         "/home": (context) => HomeScreen(),
@@ -37,10 +36,10 @@ class MyApp extends StatelessWidget {
         "/payments": (context) => PaymentMethod(),
         // "/delivery": (context) => MapSample(),
         "/delivery": (context) => DeliverySreen(),
+        "/receipt": (context) => Receipt()
       },
     );
-
   }
+
+  static of(BuildContext context) {}
 }
-
-

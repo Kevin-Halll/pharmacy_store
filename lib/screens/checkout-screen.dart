@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,7 +15,6 @@ class Checkout extends StatefulWidget {
 }
 
 class _CheckoutState extends State<Checkout> {
-
   final _formKey = GlobalKey<FormState>();
   final _field1Key = GlobalKey<FormFieldState>();
   final _field2Key = GlobalKey<FormFieldState>();
@@ -34,12 +32,17 @@ class _CheckoutState extends State<Checkout> {
         iconTheme: const IconThemeData(
           color: Colors.white,
         ),
-        title: TextLG(text: "Checkout", color: Colors.white,),
+        title: TextLG(
+          text: "Checkout",
+          color: Colors.white,
+        ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height - MediaQuery.of(context).viewPadding.top - kToolbarHeight,
+          height: MediaQuery.of(context).size.height -
+              MediaQuery.of(context).viewPadding.top -
+              kToolbarHeight,
           // height: newheight,
           // height: window.physicalSize.height,
           child: Column(
@@ -49,8 +52,14 @@ class _CheckoutState extends State<Checkout> {
                   child: Column(
                     // crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 10,),
-                      FaIcon(FontAwesomeIcons.creditCard, color: Colors.grey, size: 100,),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      FaIcon(
+                        FontAwesomeIcons.creditCard,
+                        color: Colors.grey,
+                        size: 100,
+                      ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25.0),
                         child: Divider(),
@@ -59,7 +68,8 @@ class _CheckoutState extends State<Checkout> {
                         padding: const EdgeInsets.symmetric(horizontal: 25.0),
                         child: Material(
                           elevation: 3,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
                           child: Padding(
                             padding: const EdgeInsets.all(15.0),
                             child: Form(
@@ -84,13 +94,13 @@ class _CheckoutState extends State<Checkout> {
                                       decoration: InputDecoration(
                                         filled: true,
                                         enabledBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide.none
-                                        ),
+                                            borderSide: BorderSide.none),
                                         // border: OutlineInputBorder(borderSide: BorderSide.none),
                                         labelText: "Card Holder's Name",
                                         labelStyle: TextStyle(
-                                            color: myFocusNode.hasFocus ? Colors.blue : Paints.secondaryColor
-                                        ),
+                                            color: myFocusNode.hasFocus
+                                                ? Colors.blue
+                                                : Paints.secondaryColor),
                                         hintText: "John Doe",
                                       ),
                                     ),
@@ -99,7 +109,7 @@ class _CheckoutState extends State<Checkout> {
                                     padding: const EdgeInsets.all(8.0),
                                     child: TextFormField(
                                       key: _field2Key,
-                                      onChanged: (value){
+                                      onChanged: (value) {
                                         _field2Key.currentState!.validate();
                                         // myFocusNode.hasFocus;
                                       },
@@ -127,13 +137,14 @@ class _CheckoutState extends State<Checkout> {
                                         filled: true,
 
                                         enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide.none
-                                        ),
+                                            borderSide: BorderSide.none),
                                         // fillColor: _field2Key.currentState!.isValid ? Colors.red[200] : Colors.grey[200],
                                         // border: OutlineInputBorder(borderSide: !myFocusNode.hasFocus ? BorderSide() : BorderSide.none),
                                         labelText: "Card Number",
                                         labelStyle: TextStyle(
-                                            color: myFocusNode.hasFocus ? Colors.blue : Paints.secondaryColor,
+                                          color: myFocusNode.hasFocus
+                                              ? Colors.blue
+                                              : Paints.secondaryColor,
                                         ),
                                         hintText: "xxxx - xxxx - xxxx - xxxx",
                                       ),
@@ -146,13 +157,15 @@ class _CheckoutState extends State<Checkout> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: TextFormField(
                                             key: _field3Key,
-                                            onChanged: (value){
-                                              _field3Key.currentState!.validate();
+                                            onChanged: (value) {
+                                              _field3Key.currentState!
+                                                  .validate();
                                               // myFocusNode.hasFocus;
                                             },
                                             // The validator receives the text that the user has entered.
                                             validator: (value) {
-                                              if (value == null || value.isEmpty) {
+                                              if (value == null ||
+                                                  value.isEmpty) {
                                                 return 'Date required';
                                               }
                                               return null;
@@ -160,25 +173,27 @@ class _CheckoutState extends State<Checkout> {
 
                                             //<----------- Formatters ---------->
                                             inputFormatters: [
-                                              FilteringTextInputFormatter.digitsOnly,
+                                              FilteringTextInputFormatter
+                                                  .digitsOnly,
                                               CardExpirationFormatter(),
                                             ],
                                             keyboardType: TextInputType.number,
                                             maxLength: 5,
                                             //<----------------------------------->
 
-
                                             cursorColor: Paints.secondaryColor,
                                             decoration: InputDecoration(
                                               filled: true,
-                                              enabledBorder: UnderlineInputBorder(
-                                                  borderSide: BorderSide.none
-                                              ),
+                                              enabledBorder:
+                                                  UnderlineInputBorder(
+                                                      borderSide:
+                                                          BorderSide.none),
                                               // border: OutlineInputBorder(borderSide: BorderSide.none),
                                               labelText: "Expiration Date",
                                               labelStyle: TextStyle(
-                                                  color: myFocusNode.hasFocus ? Colors.blue : Paints.secondaryColor
-                                              ),
+                                                  color: myFocusNode.hasFocus
+                                                      ? Colors.blue
+                                                      : Paints.secondaryColor),
                                               hintText: "01/23",
                                             ),
                                           ),
@@ -189,12 +204,14 @@ class _CheckoutState extends State<Checkout> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: TextFormField(
                                             key: _field4Key,
-                                            onChanged: (value){
-                                              _field4Key.currentState!.validate();
+                                            onChanged: (value) {
+                                              _field4Key.currentState!
+                                                  .validate();
                                             },
                                             // The validator receives the text that the user has entered.
                                             validator: (value) {
-                                              if (value == null || value.isEmpty) {
+                                              if (value == null ||
+                                                  value.isEmpty) {
                                                 return 'CCV required';
                                               }
                                               return null;
@@ -207,14 +224,16 @@ class _CheckoutState extends State<Checkout> {
                                             cursorColor: Paints.secondaryColor,
                                             decoration: InputDecoration(
                                               filled: true,
-                                              enabledBorder: UnderlineInputBorder(
-                                                  borderSide: BorderSide.none
-                                              ),
+                                              enabledBorder:
+                                                  UnderlineInputBorder(
+                                                      borderSide:
+                                                          BorderSide.none),
                                               // border: OutlineInputBorder(borderSide: BorderSide()),
                                               labelText: "CCV",
                                               labelStyle: TextStyle(
-                                                  color: myFocusNode.hasFocus ? Colors.blue : Paints.secondaryColor
-                                              ),
+                                                  color: myFocusNode.hasFocus
+                                                      ? Colors.blue
+                                                      : Paints.secondaryColor),
                                               hintText: "***",
                                             ),
                                           ),
@@ -232,7 +251,7 @@ class _CheckoutState extends State<Checkout> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            SummaryCard(route: "delivery"),
+                            SummaryCard(route: "receipt"),
                           ],
                         ),
                       )
