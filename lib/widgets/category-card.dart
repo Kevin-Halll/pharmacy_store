@@ -23,9 +23,9 @@ class CategoryCard extends StatelessWidget {
           children: [
             Image.asset(imageUrl, width: 60,),
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: ListView(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                // crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextMD(text: text, color: Paints.white1,),
                   TextSM(text: itemCount, color: Paints.white1,)

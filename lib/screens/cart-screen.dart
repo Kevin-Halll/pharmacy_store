@@ -76,7 +76,9 @@ class _CartState extends State<Cart> {
             ),
              Positioned(
               bottom: 0,
-              child: SummaryCard(route: "payments"),
+              child: SummaryCard(btnText: "CHECKOUT",onPressed: (){
+                Navigator.pushNamed(context, "/checkout");
+              }),
             ),
           ],
         ),

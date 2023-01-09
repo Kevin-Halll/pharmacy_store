@@ -5,8 +5,10 @@ import '../utils/text.dart';
 
 class SummaryCard extends StatelessWidget {
 
-  String route;
-   SummaryCard({Key? key, required this.route }) : super(key: key);
+  // final void Function() onPressed;
+  final VoidCallback onPressed;
+  final String btnText;
+   SummaryCard({Key? key, required this.btnText, required this.onPressed }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -88,36 +90,15 @@ class SummaryCard extends StatelessWidget {
                         ),
                       ],
                     )),
-                // SizedBox(
-                //     width: 350,
-                //     height: 50,
-                //     child: TextButton(
-                //         child: BigText(text: 'CHECHOUT', color: Colors.white,),
-                //         style: ButtonStyle(
-                //             padding:
-                //             MaterialStateProperty.all<EdgeInsets>(
-                //                 EdgeInsets.all(15)),
-                //             backgroundColor:
-                //             MaterialStateProperty.all<Color>(
-                //                 AppColor.secondBlue),
-                //             // foregroundColor: MaterialStateProperty.all<Color>(
-                //             //     Colors.blue.shade900),
-                //             shape: MaterialStateProperty.all<
-                //                 RoundedRectangleBorder>(
-                //                 RoundedRectangleBorder(
-                //                   borderRadius: BorderRadius.circular(25.0),
-                //                   // side: BorderSide(color: Colors.red)
-                //                 ))),
-                //         onPressed: () => null)),
                 Center(
                   child: Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    width: MediaQuery.of(context).size.width,
                     child: ElevatedButton(
-                        onPressed: (){
-                          Navigator.pushNamed(context, "/${route}");
-                        },
-                      child: TextLG(text: "CHECKOUT"),
+                        onPressed: onPressed,
+                      child: TextLG(text: btnText),
                       style: ButtonStyle(
+                        padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical: 12)),
                         backgroundColor: MaterialStateProperty.all(Paints.secondaryColor),
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
@@ -126,12 +107,6 @@ class SummaryCard extends StatelessWidget {
                         )
                       ),
                     ),
-                    // child: MainButtons(
-                    //     isLoading: false,
-                    //     text: "CHECKOUT",
-                    //     onclickFunction: () {
-                    //       Navigator.pushNamed(context, "/checkout");
-                    //     }),
                   ),
                 )
               ]),

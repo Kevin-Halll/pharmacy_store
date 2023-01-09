@@ -70,13 +70,14 @@ class _ProductDetailsState extends State<ProductDetails> {
           children: [
             Container(
               padding: EdgeInsets.all(20),
-              child: Image.asset("assets/images/soles.png"),
+              // child: Image.asset("assets/images/soles.png"),
+              child: Image.network("https://pharmacy-api-eta.vercel.app/api/v1/products/image/63ba2466f5bbe37a4fb1bc75", height: 230),
             ),
             Expanded(
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 padding: EdgeInsets.all(25),
-                color: Paints.white1,
+                color: Colors.white,
                 child: Column(
                   // mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -120,7 +121,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 icon: Ink(
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(7.32),
-                                      border: Border.all(color: Paints.whiteOpacity)),
+                                      // border: Border.all(color: Paints.whiteOpacity)
+                                  ),
                                   height: 24,
                                   width: 24,
                                   child: const Icon(
@@ -147,7 +149,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 icon: Ink(
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(7.32),
-                                      border: Border.all(color: Paints.white1)
+                                      // border: Border.all(color: Paints.white1)
                                   ),
                                   height: 24,
                                   width: 24,
@@ -171,19 +173,17 @@ class _ProductDetailsState extends State<ProductDetails> {
                       child: ElevatedButton(
                           onPressed: (){},
                           style: ButtonStyle(
-                            maximumSize: MaterialStateProperty.all(MediaQuery.of(context).size),
+                            padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical: 12)),
+                            // maximumSize: MaterialStateProperty.all(MediaQuery.of(context).size),
                             backgroundColor: MaterialStateProperty.all(Paints.secondaryColor),
-                            foregroundColor: MaterialStateProperty.all(Paints.white1),
+                            // foregroundColor: MaterialStateProperty.all(Paints.white1),
                             shape: MaterialStateProperty.all(
                               RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)
                               ),
                             ),
                           ),
 
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(30, 15, 30, 15),
-                            child: TextLG(text: "Add to Cart",),
-                          )
+                          child: TextLG(text: "Add to Cart",)
                       ),
                     ),
                     SizedBox(height: 15,),
@@ -208,7 +208,28 @@ class _ProductDetailsState extends State<ProductDetails> {
                           ],
                         ),
                       ),
-                    )
+                    ),
+                    SizedBox(height: 10,),
+                    // SizedBox(
+                    //   width: MediaQuery.of(context).size.width,
+                    //   child: ElevatedButton(
+                    //       onPressed: (){},
+                    //       style: ButtonStyle(
+                    //         maximumSize: MaterialStateProperty.all(MediaQuery.of(context).size),
+                    //         backgroundColor: MaterialStateProperty.all(Paints.secondaryColor),
+                    //         foregroundColor: MaterialStateProperty.all(Paints.white1),
+                    //         shape: MaterialStateProperty.all(
+                    //           RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)
+                    //           ),
+                    //         ),
+                    //       ),
+                    //
+                    //       child: Padding(
+                    //         padding: const EdgeInsets.fromLTRB(30, 15, 30, 15),
+                    //         child: TextLG(text: "Add to Cart",),
+                    //       )
+                    //   ),
+                    // ),
 
                   ],
                 ),

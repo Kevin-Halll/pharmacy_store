@@ -151,7 +151,9 @@ class _PaymentMethodState extends State<PaymentMethod> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        SummaryCard(route: "checkout"),
+                        SummaryCard(btnText: "Proceed to Checkout", onPressed: (){
+                          Navigator.pushNamed(context, "/checkout");
+                        }),
                       ],
                     ),
                   )
