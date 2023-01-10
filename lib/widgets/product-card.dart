@@ -40,7 +40,7 @@ class ProductCard extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Expanded(child: Image.network(image,)),
+                            Expanded(child: Image.network(image, height: 100,)),
                           ],
                         ),
                         SizedBox(height: 10,),

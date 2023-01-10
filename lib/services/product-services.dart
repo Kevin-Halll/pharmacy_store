@@ -9,7 +9,7 @@ class ProductService {
   // Since this function returns a list of products for cases of an error you can just return an empty array.
   // Better practice is to have this function smaller and only doing a single thing.
   // This way you do not need to return a null value.
-  Future<List<Product>> getProducts() async {
+  Future<List<Product>> getProducts(String catId) async {
     var client = http.Client();
     try{
       var uri = Uri.parse("https://pharmacy-api-eta.vercel.app/api/v1/products");
@@ -23,6 +23,10 @@ class ProductService {
         List productList = json['data'];
         //Since we have a list we have access to the map function which we use to transform the data into a Product with the fromJson method.
         List <Product> products = productList.map((product)=> Product.fromJson(product)).toList();
+        // filter product by category passed
+          Iterable<Product> productByCategory = products.where((prod) => prod.categoryId == catId).toList();
+          print(productByCategory);
+        return productByCategory as List<Product>;
         return products;
       } else {
         print("failed to get products");
