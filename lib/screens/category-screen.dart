@@ -1,14 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:pharmacy_store/components/footer.dart';
+import 'package:pharmacy_store/model/category.dart';
+import 'package:pharmacy_store/services/category-service.dart';
 import 'package:pharmacy_store/utils/colors.dart';
 import 'package:pharmacy_store/utils/text.dart';
 
 import '../widgets/category-card.dart';
 
-class CategoryScreen extends StatelessWidget {
+class CategoryScreen extends StatefulWidget {
 
-  var item = [1,2,3,4,5,6,7,8,9];
    CategoryScreen({Key? key}) : super(key: key);
+
+  @override
+  State<CategoryScreen> createState() => _CategoryScreenState();
+}
+
+class _CategoryScreenState extends State<CategoryScreen> {
+  var item = [1,2,3,4,5,6,7,8,9];
+
+  var apiLink = "https://pharmacy-api-eta.vercel.app/api/v1/categories";
+
+  List<ProductCategory> category = [];
+
+  var isLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    //  get products
+    print("products page initialized");
+    getCategories();
+  }
+
+  getCategories() async {
+    try{
+      category = await CategoryService().getCategories();
+      if(category.length > 0) {
+        print("all is null");
+        isLoaded = true;
+      }
+      setState(() {});
+    }catch(error){
+      print(error);
+    }
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,14 +105,14 @@ class CategoryScreen extends StatelessWidget {
                                     children:
 
                                     // <--------------- list generated from list called categories --------------->
-                                    List.generate(item.length, (index) {
+                                    List.generate(category.length, (index) {
                                       return Container(
                                           height: 400,
                                           width: 50,
                                           decoration: BoxDecoration(
                                             // border: Border.all(color: Colors.blue)
                                           ),
-                                          child: CategoryCard(text: "Orthopedic\nProducts", imageUrl: "assets/images/soles.png", itemCount: "147 items"));
+                                          child: CategoryCard(text: category[index].name, imageUrl: "${apiLink}/image/${category[index].id}", itemCount: "147 items", id: category[index].id,));
                                     })),
                               ),
                             ],

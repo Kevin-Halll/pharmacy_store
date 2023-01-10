@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pharmacy_store/model/category.dart';
 import 'package:pharmacy_store/utils/text.dart';
 import 'package:pharmacy_store/widgets/product-card.dart';
 
 import '../components/footer.dart';
 import '../model/products.dart';
+import '../services/category-service.dart';
 import '../services/product-services.dart';
 import '../utils/colors.dart';
 import '../widgets/category-card.dart';
@@ -19,9 +21,23 @@ class ProductScreen extends StatefulWidget {
 class _ProductScreenState extends State<ProductScreen> {
   var item = [1,2,3,4,5,6,7,8,9];
   var apiLink = "https://pharmacy-api-eta.vercel.app/api/v1/products";
+  var apiLink2 = "https://pharmacy-api-eta.vercel.app/api/v1/categories";
+  String catId = "category not recieved";
+  String categoryName = "Not Achieved";
 
   List<Product> products = [];
+  List<ProductCategory> category = [];
   var isLoaded = false;
+
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    catId = ModalRoute.of(context)!.settings.arguments as String;
+    getProducts();
+    getCategories();
+  }
 
   @override
   void initState() {
@@ -29,12 +45,14 @@ class _ProductScreenState extends State<ProductScreen> {
 
   //  get products
     print("products page initialized");
-    getProducts();
+    // getProducts();
+    // getCategories();
+    // selectedCategory();
   }
 
   getProducts() async {
     try{
-      products = await ProductService().getProducts("63bb09ab46fef0b188f40c6b");
+      products = await ProductService().getProducts(catId);
       if(products.length > 0) {
         print("all is null");
         isLoaded = true;
@@ -46,8 +64,25 @@ class _ProductScreenState extends State<ProductScreen> {
 
   }
 
+  getCategories() async {
+    try{
+      category = await CategoryService().getCategories();
+      if(category.length > 0) {
+        categoryName = category.where((element) => element.id == catId).map((e) => e.name).toList()[0];
+        isLoaded = true;
+        print(categoryName);
+      }
+
+      setState(() {});
+    }catch(error){
+      print(error);
+    }
+
+  }
+
   @override
   Widget build(BuildContext context) {
+    final arg = ModalRoute.of(context)!.settings.arguments;
     return SafeArea(
       child: Visibility(
         visible: isLoaded,
@@ -131,35 +166,15 @@ class _ProductScreenState extends State<ProductScreen> {
                         stops: [0.1, 0.9]
                       ),
                     ),
-                    // child: ListView.builder(
-                    //
-                    //     itemCount: 6,
-                    //     scrollDirection: Axis.horizontal,
-                    //     itemBuilder: (BuildContext context, index) {
-                    //       // return CategoryCard(text: "Medication\nProducts", imageUrl: "assets/images/bottle-of-pills.png", itemCount: "120 items");
-                    //       return  Row(
-                    //         children: [
-                    //           CategoryCard(text: "Medication\nProducts", imageUrl: "assets/images/bottle-of-pills.png", itemCount: "120 items"),
-                    //           // ClipRRect(
-                    //           //   borderRadius: BorderRadius.circular(15),
-                    //           //   child: Image.network("https://picsum.photos/300/300?random=6", width: 120, height: 120,),
-                    //           // ),
-                    //         ],
-                    //       );
-                    //     }),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          SizedBox(width: 150, child: CategoryCard(text: "Orthopedic\nProducts", imageUrl: "assets/images/soles.png", itemCount: "120 items")),
-                          SizedBox(width: 150, child: CategoryCard(text: "Medication\nProducts", imageUrl: "assets/images/bottle-of-pills.png", itemCount: "120 items")),
-                          SizedBox(width: 150, child: CategoryCard(text: "Medication\nProducts", imageUrl: "assets/images/bottle-of-pills.png", itemCount: "120 items")),
-                          SizedBox(width: 150, child: CategoryCard(text: "Medicationddddddddddddddddd\nProducts", imageUrl: "assets/images/bottle-of-pills.png", itemCount: "120 items")),
-                          SizedBox(width: 150, child: CategoryCard(text: "Medicationddddddddddddddddd\nProducts", imageUrl: "assets/images/bottle-of-pills.png", itemCount: "120 items")),
-                          SizedBox(width: 150, child: CategoryCard(text: "Medicationddddddddddddddddd\nProducts", imageUrl: "assets/images/bottle-of-pills.png", itemCount: "120 items")),
-                        ],
-                      ),
-                    ),
+                    child: ListView.builder(
+
+                        itemCount: category.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (BuildContext context, index) {
+                          return SizedBox(
+                            width: 150,
+                              child: CategoryCard(text: category[index].name, imageUrl: "${apiLink2}/image/${category[index].id}", itemCount: "120 items", id: category[index].id,));
+                        }),
                   ),
                   //**********
                   // Product grid display section
@@ -168,7 +183,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(20.0),
-                        child: TextLG(text: "Orthopedic Products", color: Paints.secondaryColor,),
+                        child: TextLG(text: "$categoryName Products", color: Paints.secondaryColor,),
                       ),
                       GridView.count(
                           shrinkWrap: true,
@@ -182,7 +197,6 @@ class _ProductScreenState extends State<ProductScreen> {
 
                           // <--------------- list generated from list called categories --------------->
                           List.generate( products.length , (index) {
-                            // return TextMD(text: "text");
                             return ProductCard(image: "${apiLink}/image/${products[index].id}", name: products[index].name as String ,price: products[index].price,);
                           }
                           )
